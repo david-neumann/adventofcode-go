@@ -14,4 +14,5 @@ const (
 func main() {
 	answer := day4.PartOne(inputFile)
 	fmt.Println("Answer:", answer)
+	day4.PartOne(inputFile)
 }

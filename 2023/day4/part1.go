@@ -3,13 +3,16 @@ package day4
 import (
 	"bufio"
 	"log"
+	"math"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func PartOne(filepath string) int {
 	file, err := os.Open(filepath)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("Error reading file:", err)
 	}
 	defer file.Close()
 
@@ -30,6 +33,20 @@ func parseLine(line string) (map[int]struct{}, []int) {
 	winningNums := make(map[int]struct{})
 	var yourNums []int
 
+	parts := strings.Split(line, "|")
+	colonIndex := strings.Index(parts[0], ":")
+	winningNumsStr := parts[0][colonIndex+1:]
+	for _, str := range strings.Fields(winningNumsStr) {
+		num, _ := strconv.Atoi(string(str))
+		winningNums[num] = struct{}{}
+	}
+
+	yourNumsStr := strings.Fields(strings.TrimSpace(parts[1]))
+	for _, str := range yourNumsStr {
+		num, _ := strconv.Atoi(str)
+		yourNums = append(yourNums, num)
+	}
+
 	return winningNums, yourNums
 }
 
@@ -45,16 +62,18 @@ func findWinningNums(winningNums map[int]struct{}, yourNums []int) []int {
 	return yourWinningNums
 }
 
+// Need to fix this part
 func calculatePoints(yourWinningNums []int) int {
 	points := 0
+	length := len(yourWinningNums)
 
-	switch len(yourWinningNums) {
+	switch length {
 	case 0:
 		return 0
 	case 1:
 		return 1
 	default:
-		points = len(yourWinningNums) * 2
+		points = int(math.Pow(2, float64(length)-1))
 	}
 
 	return points
