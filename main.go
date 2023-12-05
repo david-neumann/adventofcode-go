@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/david-neumann/adventofcode-go/2023/day3"
+	"github.com/david-neumann/adventofcode-go/2023/day4"
 )
 
 const (
-	inputFile = "2023/day3/input.txt"
-	testFile  = "2023/day3/test_input.txt"
+	inputFile = "2023/day4/input.txt"
+	testFile  = "2023/day4/test_input.txt"
 )
 
 func main() {
-	answer, _ := day3.PartTwo(inputFile)
+	answer := day4.PartOne(inputFile)
 	fmt.Println("Answer:", answer)
 }
