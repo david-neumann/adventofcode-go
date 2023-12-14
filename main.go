@@ -12,7 +12,7 @@ const (
 )
 
 func main() {
-	answer := day4.PartOne(inputFile)
+	answer := day4.PartTwo(inputFile)
 	fmt.Println("Answer:", answer)
-	day4.PartOne(inputFile)
+	// day4.PartTwo(inputFile)
 }

@@ -62,7 +62,6 @@ func findWinningNums(winningNums map[int]struct{}, yourNums []int) []int {
 	return yourWinningNums
 }
 
-// Need to fix this part
 func calculatePoints(yourWinningNums []int) int {
 	points := 0
 	length := len(yourWinningNums)
